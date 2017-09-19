@@ -4,181 +4,58 @@ description : Insert the chapter description here
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
 
----
-## A really bad movie
+--- type:TabExercise lang:sql xp:100 key:ecc1838fc7
+## WHERE AND OR (2)
 
-```yaml
-type: MultipleChoiceExercise
-lang: r
-xp: 50
-skills: 1
-key: 8dbdfc9ed5
-```
+You now know how to select rows that meet __some__ but not __all__ conditions by combining `AND` and `OR`.
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
-
-`@instructions`
-- Adventure
-- Action
-- Animation
-- Comedy
-
-`@hint`
-Have a look at the plot. Which color does the point with the lowest rating have?
-
-`@pre_exercise_code`
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
-
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
-
-`@sct`
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
-```
-
----
-
-## More movies
-
-```yaml
-type: NormalExercise
-lang: r
-xp: 100
-skills: 1
-key: b22e553cba
-```
-
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
-
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
-
-`@instructions`
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
-
-`@hint`
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
-
-`@pre_exercise_code`
-```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
-load(url("https://s3.amazonaws.com/assets.datacamp.com/course/teach/movies.RData"))
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"), c("Genre", "Rating", "Run")]
-
-# Clean up the environment
-rm(Movies)
-```
-
-`@sample_code`
-```{r}
-# movie_selection is available in your workspace
-
-# Check out the structure of movie_selection
-
-
-# Select movies that have a rating of 5 or higher: good_movies
-
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
+For example, the following query selects all films that were released in 1994 or 1995 which had a rating of PG or R.
 
 ```
-
-`@solution`
-```{r}
-# movie_selection is available in your workspace
-
-# Check out the structure of movie_selection
-str(movie_selection)
-
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
+SELECT title
+FROM films
+WHERE (release_year = 1994 OR release_year = 1995)
+AND (certification = 'PG' OR certification = 'R');
 ```
 
-`@sct`
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+<hr>
 
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
+Now you'll write a query to get the title and release year of films released in the 90s which were in French or Spanish and which took in more than $2M gross.
 
-test_object("good_movies")
+It looks like a lot, but you can build the query up one step at a time to get comfortable with the underlying concept in each step. Let's go!
 
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
-
-test_error()
-
-success_msg("Good work!")
-```
-
----
-## New subexercises
-
-```yaml
-type: TabExercise
-lang: sql
-xp: 100
-key: ecc1838fc7
-```
-
-This is what new tab exercises look like.
-
-`@pre_exercise_code`
+*** =pre_exercise_code
 ```{python}
 connect('postgresql', 'films')
 set_options(visible_tables = ['films'])
 ```
 
-`@sample_code`
+*** =sample_code
 ```{sql}
--- Nothing here
 ```
 
-***
+*** =type1: NormalExercise
 
-```yaml
-type: NormalExercise
-xp: 30
-key: 1a76196f4a
-```
+*** =xp1: 30
 
-`@instructions`
+*** =instructions1
 Get the title and release year for films released in the 90s.
 
-`@solution`
+*** =solution1
 ```{sql}
 SELECT title, release_year
 FROM films
 WHERE release_year >= 1990 AND release_year < 2000;
 ```
 
-`@hint`
+*** =hint1
 ```
 SELECT ___, ___
 FROM ___
 WHERE ___ >= 1990 AND ___ < 2000;
 ```
 
-`@sct`
+*** =sct1
 ```{python}
 sel = check_node('SelectStmt')
 
@@ -206,18 +83,13 @@ Ex().test_correct(check_result(), [
 ])
 ```
 
-***
+*** =type2: NormalExercise
+*** =xp2: 30
 
-```yaml
-type: NormalExercise
-xp: 30
-key: af836bbe87
-```
-
-`@instructions`
+*** =instructions2
 Now, build on your query to filter the records to only include French or Spanish language films.
 
-`@solution`
+*** =solution2
 ```{sql}
 SELECT title, release_year
 FROM films
@@ -225,7 +97,7 @@ WHERE (release_year >= 1990 AND release_year < 2000)
 AND (language = 'French' OR language = 'Spanish');
 ```
 
-`@hint`
+*** =hint2
 ```
 SELECT ___, ___
 FROM ___
@@ -233,7 +105,7 @@ WHERE (___ >= 1990 AND ___ < 2000)
 AND (___ = 'French' OR ___ = 'Spanish');
 ```
 
-`@sct`
+*** =sct2
 ```{python}
 sel = check_node('SelectStmt')
 
@@ -268,18 +140,14 @@ Ex().test_correct(check_result(), [
 ])
 ```
 
-***
+*** =type3: NormalExercise
 
-```yaml
-type: NormalExercise
-xp: 30
-key: d45b278c16
-```
+*** =xp3: 30
 
-`@instructions`
+*** =instructions3
 Finally, restrict the query to only return films that took in more than $2M gross.
 
-`@solution`
+*** =solution3
 ```{sql}
 SELECT title, release_year
 FROM films
@@ -288,7 +156,7 @@ AND (language = 'French' OR language = 'Spanish')
 AND gross > 2000000;
 ```
 
-`@hint`
+*** =hint3
 ```
 SELECT ___, ___
 FROM ___
@@ -297,7 +165,7 @@ AND (___ = '___' OR ___ = '___')
 AND ___ > ___;
 ```
 
-`@sct`
+*** =sct3
 ```{python}
 sel = check_node('SelectStmt')
 
