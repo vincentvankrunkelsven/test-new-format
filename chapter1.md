@@ -1,10 +1,8 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+title       : Chapter
+description : The first chapter
 
---- type:TabExercise lang:sql xp:100 key:ecc1838fc7
+--- type:TabExercise lang:sql xp:100 
 ## WHERE AND OR (2)
 
 You now know how to select rows that meet __some__ but not __all__ conditions by combining `AND` and `OR`.
@@ -35,8 +33,6 @@ set_options(visible_tables = ['films'])
 ```
 
 *** =type1: NormalExercise
-
-*** =key1: 185e677ea1
 
 *** =xp1: 30
 
@@ -86,8 +82,7 @@ Ex().test_correct(check_result(), [
 ```
 
 *** =type2: NormalExercise
-*** =key2: 7272860e2b
-
+*** =key2: 969ed73542
 *** =xp2: 30
 
 *** =instructions2
@@ -145,8 +140,7 @@ Ex().test_correct(check_result(), [
 ```
 
 *** =type3: NormalExercise
-
-*** =key3: ac04bb5ffd
+*** =key3: 969ed73542
 
 *** =xp3: 30
 
