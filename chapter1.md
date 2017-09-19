@@ -158,6 +158,7 @@ set_options(visible_tables = ['films'])
 ```yaml
 type: NormalExercise
 xp: 30
+key: 1a76196f4a
 ```
 
 `@instructions`
@@ -210,6 +211,7 @@ Ex().test_correct(check_result(), [
 ```yaml
 type: NormalExercise
 xp: 30
+key: af836bbe87
 ```
 
 `@instructions`
@@ -271,6 +273,7 @@ Ex().test_correct(check_result(), [
 ```yaml
 type: NormalExercise
 xp: 30
+key: d45b278c16
 ```
 
 `@instructions`
