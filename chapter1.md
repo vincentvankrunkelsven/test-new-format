@@ -2,7 +2,7 @@
 title       : Chapter
 description : The first chapter
 
---- type:TabExercise lang:sql xp:100 
+--- type:TabExercise lang:sql xp:100 key:ecc1838fc7
 ## WHERE AND OR (2)
 
 You now know how to select rows that meet __some__ but not __all__ conditions by combining `AND` and `OR`.
@@ -33,6 +33,8 @@ set_options(visible_tables = ['films'])
 ```
 
 *** =type1: NormalExercise
+
+*** =key1: f3ea860fcd
 
 *** =xp1: 30
 
@@ -140,7 +142,7 @@ Ex().test_correct(check_result(), [
 ```
 
 *** =type3: NormalExercise
-*** =key3: 969ed73542
+*** =key3: 6212cfce7e
 
 *** =xp3: 30
 
