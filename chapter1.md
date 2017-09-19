@@ -36,6 +36,8 @@ set_options(visible_tables = ['films'])
 
 *** =type1: NormalExercise
 
+*** =key1: 185e677ea1
+
 *** =xp1: 30
 
 *** =instructions1
@@ -84,6 +86,8 @@ Ex().test_correct(check_result(), [
 ```
 
 *** =type2: NormalExercise
+*** =key2: 7272860e2b
+
 *** =xp2: 30
 
 *** =instructions2
@@ -141,6 +145,8 @@ Ex().test_correct(check_result(), [
 ```
 
 *** =type3: NormalExercise
+
+*** =key3: ac04bb5ffd
 
 *** =xp3: 30
 
