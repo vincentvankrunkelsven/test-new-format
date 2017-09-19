@@ -7,7 +7,7 @@ attachments :
 ---
 ## A really bad movie
 
-```yaml
+--- key:8dbdfc9ed5
 type: MultipleChoiceExercise 
 lang: r 
 xp: 50 
@@ -49,7 +49,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 ---
 ## More movies
 
-```yaml
+--- key:b22e553cba
 type: NormalExercise 
 lang: r 
 xp: 100
